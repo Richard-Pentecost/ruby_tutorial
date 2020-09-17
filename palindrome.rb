@@ -3,18 +3,35 @@
 #   process_content == process_content.reverse
 # end
 
-class Phrase 
-  attr_accessor :content
-  def initialize(text)
-    @content = text
+class Phrase < String
+
+  def processor(string)
+    string.downcase
+  end 
+
+  def processed_content
+    processer(self)
   end
 
   def palindrome?
-    process_content = self.content.downcase
-    process_content == process_content.reverse
+    processed_content == processed_content.reverse
   end
 
   def louder
-    self.content.upcase
+    self.upcase
   end
 end
+
+class TranslatedPhrase < Phrase
+  attr_accessor :translation
+
+  def initialize(content, translation)
+    super(content)
+    @translation = translation
+  end
+
+  def processed_content
+    processor(translation)
+  end
+end
+
