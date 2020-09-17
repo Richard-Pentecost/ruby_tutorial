@@ -1,16 +1,11 @@
-class String
-  
+module Palindrome
   def palindrome?
     processed_content == processed_content.reverse
   end
-  
-  def blank?
-    !!self.match(/^\s*$/)
-  end
 
-  private 
+  private
 
   def processed_content
-    self.downcase
+    self.to_s.downcase
   end
 end
